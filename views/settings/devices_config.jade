@@ -1,0 +1,75 @@
+extends ../layout
+
+block head
+    link(href='/stylesheets/settings.css', rel='stylesheet')
+    script.
+        var local_id = []; //zmienna przechowująca index urządzenia
+        var rooms = [];    //zmienna przechowująca obiekty: pokoje
+        var rooms_id = []; //zmienna przechowująca przypisane do urządzenia pokoje
+        var rooms_name = []; //zmienna przechowująca przypisane do urządzenia pokoje
+        var rooms_level = []; //zmienna przechowująca przypisany do urządzenia poziom
+        $(document).ready(function () {
+            for (var a = 0; a < rooms_id.length; a++) {
+                $("#room_info" + a).html('<small> &nbsp;' + rooms_name[a] + '</small>');
+            }
+        });
+
+
+//treść
+block content
+    .container
+        // Main component for a primary marketing message or call to action
+        .jumbotron
+            .row
+                h2
+                    i.glyphicon.glyphicon-lamp
+                    |  Konfiguracja urządzeń
+            .row
+                ul.nav.nav-tabs.nav-justified
+                    li.active
+                        a(href='#') Urządzenia
+                    li
+                        a(href='/settings/add_device') Dodaj urządzenie
+            .row
+                .list-group
+                    each device, i in deviceList
+                        a.list-group-item
+                            script.
+                                local_id.push('#{device._id}'); // zmienna lokalna potrzebna do usunięcia urządzenia z listy
+                                //index_id.push(JSON.parse('#{i}'));
+                                //index_id.push('#{i}');
+                                //console.log('#{i}');
+                            span(id="device_info")
+                                b= device.deviceName
+                            |  (#{device.deviceType})&nbsp;
+                            span(id="room_info#{i}")
+                                script.
+                                    var index = '#{i}';
+                                    var search_roomID = '#{device.roomID}'; // szukane id pokoju
+                                    rooms = !{JSON.stringify(roomList).replace(/<\//g, "<\\/")};
+                                    for (var n = 0; n < rooms.length; n++) {
+                                        if (rooms[n]._id === search_roomID) {
+                                            rooms_id[index] = rooms[n]._id;
+                                            rooms_name[index] = rooms[n].roomName;
+                                            rooms_level[index] = rooms[n].levelName;
+                                            //console.log(n);
+                                            break;
+                                        }
+                                    }
+                                    console.log('search_roomID: ' + search_roomID);
+                                    //console.log(rooms);
+
+
+                            span.pull-right(id="db_info")  DB_id:&nbsp;
+                                = device._id
+                                |  &nbsp;
+                                .btn-group.pull-right(role='group', aria-label='...')
+                                    button.btn.btn-warning.button_delete(type='button', id='button_delete_#{i}') Usuń
+
+    // /container
+
+block scripts
+    script(src='/javascripts/delete_device.js')
+
+
+

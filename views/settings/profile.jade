@@ -1,0 +1,38 @@
+extends ../layout
+
+block head
+    link(href='/stylesheets/settings.css', rel='stylesheet')
+
+//treść
+block content
+    .container
+        // Main component for a primary marketing message or call to action
+        .jumbotron
+            h2
+                i.glyphicon.glyphicon-user
+                |  Profil
+            ul.nav.nav-tabs.nav-justified
+                li.active
+                    a(href='/settings/profile') Dane użytkownika
+                li
+                    a(href='/settings/notifications') Powiadomienia
+
+
+
+            form.form-changedata(action='/settings/profile', method='POST')
+                h3 Zmień login lub hasło
+                .input-group
+                    span.input-group-addon
+                        i.glyphicon.glyphicon-user
+                    input#inputLogin.form-control.input-sm(type='text', name='user_login', placeholder='Nowy login', required='', autofocus='')
+                .input-group
+                    span.input-group-addon
+                        i.glyphicon.glyphicon-lock
+                    input#inputPassword.form-control.input-sm(type='password', name='password', placeholder='Nowe hasło', required='')
+                br
+                button.btn.btn-md.btn-primary(type='submit', role='button') Zmień login/hasło
+
+
+    // /container
+
+

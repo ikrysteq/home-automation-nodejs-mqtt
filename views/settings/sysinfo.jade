@@ -1,0 +1,56 @@
+extends ../layout
+
+block head
+    link(href='/stylesheets/home.css', rel='stylesheet')
+    script(src='/socket.io/socket.io.js')
+    script(src='/javascripts/getSysInfo.js')
+//treść
+block content
+    .container
+        // Main component for a primary marketing message or call to action
+        .jumbotron
+            h2
+                i.glyphicon.glyphicon-info-sign
+                |  Informacje o systemie
+            .row
+                .col-lg-3.col-md-3
+                    p
+                        b Czas systemu:
+                .col-lg-9.col-md-9
+                    p#sysTime
+            .row
+                .col-lg-3.col-md-3
+                    p
+                        b Obciążęnie CPU:
+                .col-lg-9.col-md-9
+                    p#cpuLoad
+            .row
+                .col-lg-3.col-md-3
+                    p
+                        b Komputer:
+                .col-lg-9.col-md-9
+                    p#device_manufacturer
+            .row
+                .col-lg-3.col-md-3
+                    p
+                        b OS:
+                .col-lg-9.col-md-9
+                    p#OSinfo
+            .row
+                .col-lg-3.col-md-3
+                    p
+                        b Nazwa hosta:
+                .col-lg-9.col-md-9
+                    p#hostname
+
+
+
+
+
+
+
+
+
+
+    // /container
+

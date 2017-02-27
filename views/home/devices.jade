@@ -1,0 +1,62 @@
+extends ../layout
+
+block head
+    link(href='/stylesheets/devices.css', rel='stylesheet')
+    script(src='/socket.io/socket.io.js')
+    script(src='/javascripts/devices_panel.js')
+
+//treść
+block content
+    .container
+        // Main component for a primary marketing message or call to action
+        .jumbotron
+            h2
+                i.glyphicon.glyphicon-lamp
+                |  Urządzenia
+            .row
+                each device, i in deviceList
+                    .col-md-4
+                        .panel.panel-info
+                                    .panel-heading #{device.deviceName}
+                                    .panel-body.panel-height(id='data_#{device._id}')
+                                        - var deviceType = device.deviceType
+                                        - var deviceData = device.data
+                                        if deviceType == 'Alarm'
+                                            h3.panel-center
+                                                | Czuwanie...
+                                        if deviceType == 'Moduł pomiaru energii'
+                                            h3.panel-center
+                                                | -- W
+                                        if deviceType == 'Przełącznik'
+                                            .panel-center
+                                                if deviceData == 'true'
+                                                    h3
+                                                        span.label.lb-lg.label-success ON
+                                                        | &nbsp;&nbsp;&nbsp;
+                                                        a.btn.btn-sm.btn-info(id='switch_#{device._id}_#{device.roomID}' type='submit', role='button') Wyłącz
+                                                if deviceData == 'false'
+                                                    h3
+                                                        span.label.label-danger OFF
+                                                        | &nbsp;&nbsp;&nbsp;
+                                                        a.btn.btn-sm.btn-primary(id='switch_#{device._id}_#{device.roomID}' type='submit', role='button') Załącz
+                                        if deviceType == 'Czujnik temperatury i wilgotności'
+                                            h2.panel-center
+                                                i.fa.fa-thermometer-half(aria-hidden='true')
+                                                |  --°C
+                                                br
+                                                i.fa.fa-tint
+                                                |     --%
+                                        if deviceType == 'Termostat'
+                                            | temp + input + button
+                                        if deviceType == 'Czujnik natężenia światła'
+                                            h2.panel-center --%
+
+                                        //h4
+                                        //    span.label.label-success ON
+                                        //    span.label.label-danger OFF
+                                        //    | &nbsp;&nbsp;&nbsp;
+                                        //    a.btn.btn-sm.btn-danger(type='submit', role='button') ON/OFF
+
+
+    // /container
+

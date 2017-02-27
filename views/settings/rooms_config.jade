@@ -1,0 +1,56 @@
+extends ../layout
+
+block head
+    link(href='/stylesheets/settings.css', rel='stylesheet')
+    script.
+        var local_id = []; //zmienna przechowująca index pokoju
+
+//treść
+block content
+    .container
+        // Main component for a primary marketing message or call to action
+        .jumbotron
+            .row
+                    h2
+                        i.glyphicon.glyphicon-home
+                        |  Konfiguracja pomieszczeń
+            .row
+                .list-group
+                    each room, i in roomList
+                        a.list-group-item
+                            script.
+                                local_id.push('#{room._id}');
+                                //index_id.push(JSON.parse('#{i}'));
+                                //index_id.push('#{i}');
+                                //console.log('#{i}');
+                            span(id="room_info")= room.roomName
+                            span  (
+                            = room.levelName
+                            | )&nbsp;
+                            span.pull-right(id="db_info")  DB_id:&nbsp;
+                                = room._id
+                                |  &nbsp;
+                                .btn-group.pull-right(role='group', aria-label='...')
+                                    button.btn.btn-warning.button_delete(type='button', id='button_delete_#{i}') Usuń
+
+            .row
+                .col-lg-6.col-md-6.col-sm-4
+
+                .col-lg-6.col-md-6.col-sm-8
+                    h2
+                        i.glyphicon.glyphicon-home
+                        |  Dodaj pomieszczenie
+                    br
+
+                    form#formAddRoom.form-changedata(name="addroom", method="POST", action="/settings/rooms_config")
+                                input#inputRoomName.form-control.input-sm(type="text", placeholder="Pomieszczenie, np. Kuchnia", name="room_name")
+                                input#inputLevelName.form-control.input-sm(type="text", placeholder="Poziom, np. 1 Parter", name="level")
+                                br
+                                button#btnSubmit.btn.btn-md.btn-primary(type="submit") Dodaj pomieszczenie
+
+
+    // /container
+block scripts
+    script(src='/javascripts/delete_room.js')
+
+

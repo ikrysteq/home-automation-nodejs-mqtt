@@ -1,0 +1,55 @@
+body {
+    padding-top: 70px;
+    background-color: #444444;
+}
+
+.jumbotron {
+    min-height: 400px;
+    background-color: #ffffff;
+}
+
+.form-changedata {
+    max-width: 330px;
+}
+
+
+.nav-justified {
+
+}
+/* konfiguracja urządzeń */
+.list-group-item {
+    /*background-color: #337ab7;*/
+    min-height: 56px;
+    vertical-align: middle;
+}
+a.list-group-item {
+    overflow: hidden;
+    /*display: table;*/
+}
+
+a.list-group-item > div {
+    /*display: table-cell;*/
+    vertical-align: middle;
+    /*float: inherit;*/
+}
+
+.mqttinput {
+    max-width: 330px;
+}
+select.mqttinput {
+    max-width: 80px;
+}
+
+#room_info, #device_info {
+    font-size: large;
+    vertical-align: middle;
+}
+
+#db_info {
+    font-size: x-small;
+    color: #9d9d9d;
+}
+
+#warningMQTT {
+    text-align: center;
+}

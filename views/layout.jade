@@ -1,0 +1,132 @@
+doctype html
+html(lang='pl')
+    head
+        meta(charset='utf-8')
+        meta(http-equiv='X-UA-Compatible', content='IE=edge')
+        meta(name='viewport', content='width=device-width, initial-scale=1')
+        // The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags
+        meta(name='description', content='System automatyki budynku')
+        meta(name='author', content='Krystian Grzymski, Witold Zwolankiewicz')
+        link(rel='icon', href='/favicon.ico')
+        title= title
+
+        // Bootstrap core CSS
+        link(href='/stylesheets/bootstrap/bootstrap.min.css', rel='stylesheet')
+        // IE10 viewport hack for Surface/desktop Windows 8 bug
+        link(href='/stylesheets/bootstrap/ie10-viewport-bug-workaround.css', rel='stylesheet')
+        link(href='/stylesheets/font-awesome/font-awesome.min.css', rel='stylesheet')
+
+        script(src='/javascripts/jquery/jquery.min.js')
+        script(src='/javascripts/bootstrap/bootstrap.min.js')
+
+        // Custom styles for this template
+        block head
+
+        script(src='/javascripts/bootstrap/ie-emulation-modes-warning.js')
+
+    body
+        nav.navbar.navbar-inverse.navbar-fixed-top
+            .container
+                .navbar-header
+                    button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar', aria-expanded='false', aria-controls='navbar')
+                        span.sr-only Toggle navigation
+                        span.icon-bar
+                        span.icon-bar
+                        span.icon-bar
+                    a.navbar-brand(href='/home')
+                        i.glyphicon.glyphicon-home
+                        | &nbsp;
+                        = username
+
+                #navbar.navbar-collapse.collapse
+                    ul.nav.navbar-nav
+                        if '/home/devices' == current_url
+                            li.active
+                                a(href='/home/devices') Urządzenia
+                        else
+                            li
+                                a(href='/home/devices') Urządzenia
+                        if '/home/scenes' == current_url
+                            li.active
+                                a(href='/home/scenes') Scenariusze
+                        else
+                            li
+                                a(href='/home/scenes') Scenariusze
+
+                    ul.nav.navbar-nav.navbar-right
+                        li.dropdown
+                            a.dropdown-toggle(href='', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+                                | Ustawienia
+                                span.caret
+                            ul.dropdown-menu
+                                if '/settings/profile' == current_url
+                                    li.active
+                                        a(href='/settings/profile')
+                                            i.glyphicon.glyphicon-user
+                                            | &nbsp; Profil
+                                else
+                                    li
+                                        a(href='/settings/profile')
+                                            i.glyphicon.glyphicon-user
+                                            | &nbsp; Profil
+                                if '/settings/devices_config' == current_url
+                                    li.active
+                                        a(href='/settings/devices_config')
+                                            i.glyphicon.glyphicon-lamp
+                                            | &nbsp; Konfiguracja urządzeń
+                                else
+                                    li
+                                        a(href='/settings/devices_config')
+                                            i.glyphicon.glyphicon-lamp
+                                            | &nbsp; Konfiguracja urządzeń
+                                if '/settings/rooms_config' == current_url
+                                    li.active
+                                        a(href='/settings/rooms_config')
+                                            i.glyphicon.glyphicon-home
+                                            | &nbsp; Konfiguracja pomieszczeń
+                                else
+                                    li
+                                        a(href='/settings/rooms_config')
+                                            i.glyphicon.glyphicon-home
+                                            | &nbsp; Konfiguracja pomieszczeń
+                                if '/settings/network' == current_url
+                                    li.active
+                                        a(href='/settings/network')
+                                            i.glyphicon.glyphicon-signal
+                                            | &nbsp; Ustawienia sieciowe
+                                else
+                                    li
+                                        a(href='/settings/network')
+                                            i.glyphicon.glyphicon-signal
+                                            | &nbsp; Ustawienia sieciowe
+                                if '/settings/sysinfo' == current_url
+                                    li.active
+                                        a(href='/settings/sysinfo')
+                                            i.glyphicon.glyphicon-info-sign
+                                            | &nbsp; Informacje o systemie
+                                else
+                                    li
+                                        a(href='/settings/sysinfo')
+                                            i.glyphicon.glyphicon-info-sign
+                                            | &nbsp; Informacje o systemie
+
+                        li.active
+                            a(href='/logout')
+                                | Wyloguj &nbsp;
+                                i.glyphicon.glyphicon-off
+                                span.sr-only (current)
+                // /.nav-collapse
+                  // /container        //treść
+        block content
+
+
+        //
+                  Bootstrap core JavaScript
+                  ==================================================
+        // Placed at the end of the document so the pages load faster:scr
+
+        // IE10 viewport hack for Surface/desktop Windows 8 bug
+        script(src='/javascripts/bootstrap/ie10-viewport-bug-workaround.js')
+        block scripts
+
+

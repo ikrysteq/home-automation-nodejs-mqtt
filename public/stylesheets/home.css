@@ -1,0 +1,45 @@
+body {
+  min-height: 500px;
+  padding-top: 70px;
+  background-color: #444444;
+}
+.jumbotron{
+  background-color: #ffffff;
+}
+
+.thumbnail {
+  min-height: 300px;
+  /*background-color: #999999;*/
+  border-color: #5bc0de;
+  border-width: inherit;
+  /*border-bottom-color: #222222;*/
+  /*border-right-color: #222222;*/
+  box-shadow: 0 0px 15px #5bc0de;
+
+}
+
+.icon_green {
+  text-align: center;
+  color: #67b168;
+  transform: scale(2,2);
+}
+
+.icon_alert {
+  text-align: center;
+  color: #d43f3a;
+  transform: scale(2,2);
+}
+
+.icon {
+  text-align: center;
+  transform: scale(2,2);
+}
+
+ /*nieużywane: */
+.img-thumbnail {
+  background-color: #999999;
+}
+
+h3, p {
+  text-align: center;
+}

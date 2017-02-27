@@ -1,0 +1,67 @@
+doctype html
+html(lang='pl')
+    head
+        meta(charset='utf-8')
+        meta(http-equiv='X-UA-Compatible', content='IE=edge')
+        meta(name='viewport', content='width=device-width, initial-scale=1')
+        // The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags
+        meta(name='description', content='Logowanie do systemu automatyki budynku')
+        meta(name='author', content='Krystian Grzymski, Witold Zwolankiewicz')
+        link(rel='icon', href='favicon.ico')
+        title Logowanie do systemu
+        // Bootstrap core CSS
+        link(href='stylesheets/bootstrap/bootstrap.min.css', rel='stylesheet')
+        // IE10 viewport hack for Surface/desktop Windows 8 bug
+        link(href='stylesheets/bootstrap/ie10-viewport-bug-workaround.css', rel='stylesheet')
+
+        // Custom styles for this template
+        link(href='stylesheets/login.css', rel='stylesheet')
+
+        script(src='javascripts/bootstrap/ie-emulation-modes-warning.js')
+
+    body
+        // container
+        .container
+            //form.klasa
+            form.form-signin(action='/login', method='POST')
+                h2.form-signin-heading Logowanie
+                label.sr-only(for='inputLogin') Login
+                input#inputLogin.form-control(type='text', name='user_login', placeholder='Login', required='', autofocus='')
+                label.sr-only(for='inputPassword') Hasło
+                input#inputPassword.form-control(type='password', name='password', placeholder='Hasło', required='')
+                button.btn.btn-lg.btn-primary.btn-block(type='submit') Wyślij
+                if login_incorrect
+                    p(id='incorrect')
+                        .alert.alert-warning
+                            strong Zła nazwa użytkownika lub hasło
+
+        // /container
+
+        // Placed at the end of the document so the pages load faster:scr
+        script(src='javascripts/jquery/jquery.min.js')
+        // IE10 viewport hack for Surface/desktop Windows 8 bug
+        script(src='javascripts/bootstrap/ie10-viewport-bug-workaround.js')
+
+//
+// wczesniejsza wersja logowania
+//doctype html
+//html
+//    head
+//        title= title
+//        link(rel='stylesheet', href='/stylesheets/login.css')
+//    body
+//        div
+//            form(action='/login', method='POST')
+//                fieldset
+//                    legend
+//                        b Zaloguj się
+//                    p
+//                        | Użytkownik:   
+//                        input(type='text', name='user')
+//                    p
+//                        | Hasło:   
+//                        input(type='password', name='password')
+//                    button Wyślij
+//                    if login_incorrect
+//                        br
+//                        p(id='incorrect') Zła nazwa użytkownika lub hasło

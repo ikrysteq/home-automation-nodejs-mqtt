@@ -1,0 +1,77 @@
+extends ../layout
+
+block head
+    link(href='/stylesheets/home.css', rel='stylesheet')
+
+//treść
+block content
+    .container
+        // Main component for a primary marketing message or call to action
+        .jumbotron
+            .row
+                h2
+                    i.glyphicon.glyphicon-home
+                    |  Pomieszczenia
+            //.row
+            //    ul
+            //        each level, i in levels
+            //            li
+            //                p= level
+            .row
+                    each level, i in levels
+                        .panel.panel-info
+                            .panel-heading= level
+                            .panel-body
+                                .col-md-4
+                                    .panel.panel-info
+                                        .panel-heading Lampa 1
+                                        .panel-body
+                                            h4
+                                                span.label.label-success ON
+                                                span.label.label-danger OFF
+                                                | &nbsp;&nbsp;&nbsp;
+                                                a.btn.btn-sm.btn-danger(type='submit', role='button') ON/OFF
+            //.row
+            //    ul
+            //        each room, i in roomList
+            //            li
+            //                p= room.roomName
+            //                    |  -&nbsp;
+            //                    span= room.levelName
+            //.row
+            //     ul
+            //        //each value, index in {1:'one',2:'two',3:'three'}
+            //        each level, i in levelList
+            //            li
+            //                p= level.levelName
+            //                each room, i in roomList
+            //                    h6= room.roomName
+
+            //.panel.panel-info
+            //    .panel-heading Kuchnia
+            //    .panel-body
+            //        .col-md-4
+            //            .panel.panel-info
+            //                .panel-heading Lampa 1
+            //                .panel-body
+            //                    h4
+            //                        span.label.label-success ON
+            //                        span.label.label-danger OFF
+            //                        | &nbsp;&nbsp;&nbsp;
+            //                        a.btn.btn-sm.btn-danger(type='submit', role='button') ON/OFF
+            //            .panel.panel-info
+            //                .panel-heading Czujnik temperatury
+            //                .panel-body 23 st.C
+            //.panel.panel-info
+            //    .panel-heading Salon
+            //    .panel-body
+            //        .col-md-4
+            //            .panel.panel-info
+            //                .panel-heading Alarm
+            //                .panel-body Uzbrojony
+            //            .panel.panel-info
+            //                .panel-heading Watomierz
+            //                .panel-body 122 W
+
+// /container
+

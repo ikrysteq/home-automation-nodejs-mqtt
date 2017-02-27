@@ -1,0 +1,73 @@
+extends layout
+
+block head
+    link(href='/stylesheets/home.css', rel='stylesheet')
+    script(src='/socket.io/socket.io.js')
+    script(src='/javascripts/home_panel.js')
+
+
+//treść
+block content
+    .container
+        // Main component for a primary marketing message or call to action
+        .row
+            .col-sm-3.col-md-3
+                .thumbnail(id='thumbnail-1')
+                    img(src='/images/home.png', alt='home')
+                    .caption
+                        h3 Witaj #{username}!
+                        p Dane o urządzeniach:
+                            br
+                            a.btn.btn-primary(href='/home/devices', role='button', id="button-1") Urządzenia
+
+            .col-sm-3.col-md-3
+                .thumbnail
+                    br
+                    h1.icon
+                        i.glyphicon.glyphicon-film
+                    .caption
+                        br
+                        p Wybrany scenariusz:
+                        each scenario, i in scenarioList
+                            if scenario.data == 'true'
+                                h3
+                                    b #{scenario.scenarioName}
+                                br
+                            else
+                        if allScenesOff == true
+                            p Żaden nieaktywny
+                        p
+                            a.btn.btn-primary(href='/home/scenes', role='button') Zmień scenariusz
+
+            .col-sm-3.col-md-3
+                .thumbnail
+                    br
+                    h1.icon
+                        i.glyphicon.glyphicon-time
+                    .caption
+                        br
+                        h3(id="labelTime") -- : -- : --
+                        b
+                            p(id="date")
+            .col-sm-3.col-md-3
+                .thumbnail
+                    br
+                    h1.icon_alert
+                        i.glyphicon.glyphicon-bell
+                    .caption
+                        h3 Alarm
+                        - var on = false;
+                        each scenario, i in scenarioList
+                            if scenario.scenarioName == 'Alarm' && scenario.data == 'true'
+                                p Uzbrojony
+                                - on = true;
+                            else if scenario.scenarioName == 'Poza domem' && scenario.data == 'true'
+                                p Uzbrojony
+                                - on = true;
+                            else
+                        if on == false
+                            p Nieuzbrojony
+                        p
+                            a.btn.btn-primary(href='/home/scenes', role='button') Zmień
+
+    // /container

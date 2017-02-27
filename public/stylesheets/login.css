@@ -1,0 +1,119 @@
+/*body {*/
+    /*background-color: #b8e2f4;*/
+    /*font-family: Arial, Helvetica, sans-serif;*/
+    /*background-image: url('../images/backgnd.png');*/
+    /*background-repeat: no-repeat;*/
+/*}*/
+/*fieldset {*/
+    /*margin: 0;*/
+    /*position: absolute;*/
+    /*top: 50%;*/
+    /*left: 50%;*/
+    /*-ms-transform: translate(-50%, -50%);*/
+    /*transform: translate(-50%, -50%);*/
+    /*background-color: #449bc0;*/
+/*}*/
+/*legend {*/
+    /*color: azure;*/
+    /*text-shadow: 0px 0px 10px black;*/
+/*}*/
+/*p {*/
+    /*color: azure;*/
+    /*text-shadow: 1px 1px 5px black;*/
+/*}*/
+/*input {*/
+    /*float: right;*/
+/*}*/
+/*button {*/
+    /*float: right;*/
+    /*margin-right: 10%;*/
+/*}*/
+
+/*#incorrect {*/
+    /*color: azure;*/
+    /*text-shadow: 1px 1px 5px black;*/
+    /*text-align: center;*/
+    /*font-size: small;*/
+/*}*/
+
+
+
+
+/* default styles here for older browsers.
+*/
+body {
+    padding-top: 140px;
+    padding-bottom: 40px;
+    /*background-color: #eee;*/
+    background-color: #dce4ee;
+    background-image: url('../images/backgnd.png');
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: contain;
+}
+
+#incorrect {
+    text-emphasis:;-shadow: 1px 1px 5px black;
+    text-align: center;
+}
+
+.alert.alert-warning {
+    text-align: center;
+}
+
+.form-signin {
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+    margin-bottom: 10px;
+}
+.form-signin .checkbox {
+    font-weight: normal;
+}
+.form-signin .form-control {
+    position: relative;
+    height: auto;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 10px;
+    font-size: 16px;
+}
+.form-signin .form-control:focus {
+    z-index: 2;
+}
+.form-signin input[type="text"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+
+
+
+/* style dla urządzeń o rozmiarze nie większym niż 375px; */
+@media only screen and (max-device-width:375px) and (orientation:portrait) {
+    body {
+        background-image: url('../images/backgnd_small.png');
+        background-size: contain;
+    }
+}
+/* style dla przeglądarki o rozmiarze nie większym niż 500px; */
+@media only screen and (max-width:500px) {
+    body {
+        background-image: url('../images/backgnd_small.png');
+        background-size: contain;
+    }
+}
+@media only screen and (orientation:landscape) {
+    background-image: url('../images/backgnd.png');
+    background-size: contain;
+}

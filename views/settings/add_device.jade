@@ -1,0 +1,69 @@
+extends ../layout
+
+block head
+    link(href='/stylesheets/settings.css', rel='stylesheet')
+
+//treść
+block content
+    .container
+        // Main component for a primary marketing message or call to action
+        .jumbotron
+            .row
+                h2
+                    i.glyphicon.glyphicon-wrench
+                    |  Dodaj urządzenie
+            .row
+                ul.nav.nav-tabs.nav-justified
+                    li
+                        a(href='/settings/devices_config') Urządzenia
+                    li.active
+                        a(href='#') Dodaj urządzenie
+                br
+
+
+
+            //MQTT subscribe newDevice
+            //MQTT public connectNewDevice
+            //MQTT list new devices
+
+            .row
+                .col-lg-6.col-md-6.col-sm-8
+                    form#formAddDevice.form-changedata(name="adddevice", method="POST", action="/settings/add_device/:add")
+                        label(for='inputDeviceName') Nazwa urządzenia:
+                        input#inputDeviceName.form-control.input-sm(type="text", placeholder="Lampka LED / Pompa / Zraszacz", name="device_name")
+                        br
+                        label(for='inputDeviceType') Typ urządzenia:
+                        select#inputDeviceType.form-control(name="device_type")
+                            option Przełącznik
+                            option Czujnik temperatury i wilgotności
+                            option Alarm
+                            option Czujnik natężenia światła
+                        br
+                        .form-group
+                            label(for='roomSelect') Pokój:
+                            select#roomSelect.form-control(name="roomID")
+                                each room, i in roomList
+                                    option(id="roomid_#{i}") #{room.roomName} (#{room.levelName})
+                        //button#button_add.btn.btn-md.btn-primary(type="submit") Dodaj urządzenie
+                        button#button_add.btn.btn-md.btn-primary(type="button") Dodaj urządzenie
+block scripts
+    script.
+        $(document).ready(function () {
+            $('#button_add').click(function () {
+                var index = $("#roomSelect").children(":selected").attr("id").split('_');
+                var id = index[1];
+                var roomID = !{JSON.stringify(roomList).replace(/<\//g, "<\\/")}
+                //console.log(roomID[id]._id);
+                $('#roomSelect option:selected').text(roomID[id]._id)
+                //console.log(ggg);
+                //$('select:selected').val(newValue);
+                $('#formAddDevice').submit();
+            });
+        });
+
+
+
+
+
+    // /container
+

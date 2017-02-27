@@ -1,0 +1,39 @@
+extends ../layout
+
+block head
+    link(href='/stylesheets/devices.css', rel='stylesheet')
+
+//treść
+block content
+    .container
+        // Main component for a primary marketing message or call to action
+        .jumbotron
+            h2
+                i.glyphicon.glyphicon-film
+                |  Scenariusze
+                h4 Wybierz jeden scenariusz:
+            .row
+                each scenario, i in scenarioList
+                    .col-md-4
+                        .panel.panel-info
+                            .panel-heading #{scenario.scenarioName}
+                            .panel-body.panel-center(id='data_#{scenario._id}')
+                                - var OnOff = scenario.data
+                                if OnOff == "true"
+                                    h3
+                                        span.label.label-success ON
+                                        | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        a.btn.btn-md.btn-info(id='switch_#{scenario._id}', type='submit', role='button') Wyłącz
+                                else
+                                    if OnOff == "false"
+                                        h3
+                                            span.label.label-danger OFF
+                                            | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            a.btn.btn-md.btn-primary(id='switch_#{scenario._id}', type='submit', role='button') Włącz
+                                    else
+                                        h3 --
+
+    // /container
+
+block scripts
+    script(src='/javascripts/switch_scenario.js')

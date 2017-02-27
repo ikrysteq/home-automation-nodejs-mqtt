@@ -1,0 +1,61 @@
+extends ../layout
+
+block head
+    link(href='/stylesheets/home.css', rel='stylesheet')
+    script(src='/socket.io/socket.io.js')
+    script(src='/javascripts/getSysInfo.js')
+
+//treść
+block content
+    .container
+        // Main component for a primary marketing message or call to action
+        .jumbotron
+            h2
+                i.glyphicon.glyphicon-signal
+                |  Ustawienia sieciowe
+            ul.nav.nav-tabs.nav-justified
+                li.active
+                    a(href='/settings/network') Sieć lokalna
+                li
+                    a(href='/settings/mqtt') Klient MQTT
+            br
+            .row
+                .col-lg-3.col-md-3
+                    p
+                        b Interfejs:
+                .col-lg-9.col-md-9
+                    p#interface
+            .row
+                .col-lg-3.col-md-3
+                    p
+                        b Typ:
+                .col-lg-9.col-md-9
+                    p#type_con
+            .row
+                .col-lg-3.col-md-3
+                    p
+                        b Adres IP:
+                .col-lg-9.col-md-9
+                    p#IP
+            .row
+                .col-lg-3.col-md-3
+                    p
+                        b Adres MAC:
+                .col-lg-9.col-md-9
+                    p#MAC
+            .row
+                .col-lg-3.col-md-3
+                    p
+                        b Brama domyślna:
+                .col-lg-9.col-md-9
+                    p#gateway
+            .row
+                .col-lg-3.col-md-3
+                    p
+                        b Maska podsieci:
+                .col-lg-9.col-md-9
+                    p#netmask
+
+
+    // /container
+

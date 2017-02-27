@@ -1,0 +1,90 @@
+extends ../layout
+
+block head
+    link(href='/stylesheets/settings.css', rel='stylesheet')
+    script(src='/javascripts/mqtt_edit.js')
+
+//treść
+block content
+    .container
+        // Main component for a primary marketing message or call to action
+        .jumbotron
+            h2
+                i.glyphicon.glyphicon-signal
+                |  Ustawienia sieciowe
+            ul.nav.nav-tabs.nav-justified
+                li
+                    a(href='/settings/network') Sieć lokalna
+                li.active
+                    a(href='/settings/mqtt') Klient MQTT
+            br
+            form#formMQTT(name="adddevice", method="POST", action="/settings/mqtt/:update")
+                .row
+                    .col-lg-3.col-md-3
+                        p
+                            b Port MQTT:
+                    .col-lg-9.col-md-9
+                        input#inputPort.form-control.input-md.mqttinput(type="text", placeholder="1883", name="port")
+
+                .row
+                    .col-lg-3.col-md-3
+                        p
+                            b Host:
+                    .col-lg-9.col-md-9
+                        input#inputHost.form-control.input-md.mqttinput(type="text", placeholder="localhost lub np. 192.168.1.123", name="host")
+                .row
+                    .col-lg-3.col-md-3
+                        p
+                            b QoS:
+                    .col-lg-9.col-md-9
+                        select#inputQoS.form-control.mqttinput(name="qos")
+                            option#opt0 0
+                            option#opt1 1
+                            option#opt2 2
+                .row
+                    .col-lg-3.col-md-3
+                    .col-lg-9.col-md-9
+                        button#button_add.btn.btn-md.btn-primary(type='submit', role='button') Zapisz ustawienia
+                .row
+                    .col-lg-7.col-sm-6
+                        p#warningMQTT
+                            .alert.alert-danger
+                                i.glyphicon.glyphicon-alert
+                                strong  &nbsp;Po zmianie ustawień konieczny jest restart systemu.
+                .row
+                    .col-lg-3.col-md-3
+                        p
+                            b Nazwa klienta:
+                    .col-lg-9.col-md-9
+                        p
+                            =clientid
+                .row
+                    .col-lg-3.col-md-3
+                        p
+                            b Port:
+                    .col-lg-9.col-md-9
+                        p
+                            =port
+                .row
+                    .col-lg-3.col-md-3
+                        p
+                            b Host:
+                    .col-lg-9.col-md-9
+                        p
+                            =host
+                .row
+                    .col-lg-3.col-md-3
+                        p
+                            b QoS:
+                    .col-lg-9.col-md-9
+                        p
+                            =qos
+
+
+
+    // /container
+block scripts
+    script.
+//        $("#inputDeviceType")(":selected"){
+//
+//        }

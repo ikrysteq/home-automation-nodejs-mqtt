@@ -1,0 +1,48 @@
+body {
+    min-height: 1000px;
+    padding-top: 70px;
+    background-color: #444444;
+}
+.jumbotron{
+    background-color: #ffffff;
+}
+
+.thumbnail {
+    /*background-color: #999999;*/
+    border-color: #5bc0de;
+    border-width: inherit;
+    /*border-bottom-color: #222222;*/
+    /*border-right-color: #222222;*/
+    box-shadow: 0 0px 15px #5bc0de;
+}
+
+.icon_green {
+    text-align: center;
+    color: #67b168;
+    transform: scale(2,2);
+}
+
+.icon_alert {
+    color: #d43f3a;
+    transform: scale(2,2);
+}
+
+.icon {
+    transform: scale(2,2);
+}
+
+.panel-height {
+    min-height: 100px;
+}
+.panel-center {
+    text-align: center;
+    vertical-align: middle;
+}
+
+h3 {
+    text-align: center;
+}
+
+.active_scene {
+    background-color: #265a88;
+}
